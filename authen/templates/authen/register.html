@@ -1,0 +1,33 @@
+{% extends 'authen/base.html'%}
+{%load crispy_forms_tags%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Registration Page{%endblock title%}</title>
+</head>
+<body>
+    {%block content%}
+    <h2 class="text-center">Enter Registration Details</h2>
+    <div class="col-md-6 offset-md-3">
+        <form action="{%url 'register'%}" method="POST">
+            {% csrf_token %}
+            {%if form.errors%}
+            <div class="alert alert-info alert-dismissible fade show" role="alert">                
+            <h1>Review Entered Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                {% for fields in form%}
+                {%if fields.errors%}
+                {{fields.errors}}
+                {%endif%}
+                {%endfor%}
+              </div>
+            {%endif%}
+            {{form|crispy}} 
+            <input type="submit" value="Sign Up" class="btn btn-outline-success">
+        </form>
+    </div>
+    {%endblock%}
+</body>
+</html>

@@ -1,0 +1,18 @@
+{% extends 'authen/base.html'%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{%block title%}Home Page{%endblock title%}</title>
+</head>
+<body>
+    {%block content%}
+    <h1>Welcome {{user.username}}</h1>
+    <h1>Here are your registration details</h1>
+    <h1>Username: {{user.username}} </h1>
+    <h1>Email: {{user.email}}</h1>
+    <h1>Name: {{user.first_name}} {{user.last_name}}</h1>
+    {%endblock%}
+</body>
+</html>
