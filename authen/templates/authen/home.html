@@ -8,11 +8,21 @@
 </head>
 <body>
     {%block content%}
+    {% if user.is_authenticated%} 
     <h1>Welcome {{user.username}}</h1>
     <h1>Here are your registration details</h1>
     <h1>Username: {{user.username}} </h1>
     <h1>Email: {{user.email}}</h1>
     <h1>Name: {{user.first_name}} {{user.last_name}}</h1>
+    {%else%}
+    <h2 class="text-center">Please SignUp OR Login To Continue</h2>
+    <div class="col-md-6 offset-md-3 text-center">   
+        <br> <br>    
+        <a href="{% url 'register' %}"><button class="btn btn-outline-success col-md-9" type="submit">Sign Up</button></a>
+        <br><br>
+        <a href="{% url 'login' %}"><button class="btn btn-outline-success col-md-9" type="submit">Login</button></a>
+    </div>
+    {%endif%}
     {%endblock%}
 </body>
 </html>
